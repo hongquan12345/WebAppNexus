@@ -1,9 +1,5 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using NexusApp.Areas.Employee.Repository;
-
-    using Microsoft.EntityFrameworkCore;
-
+using Microsoft.EntityFrameworkCore;
 using NexusApp.Areas.Financial.Reposetory.Account;
 using NexusApp.Areas.Financial.Reposetory.Connect;
 using NexusApp.Areas.Financial.Reposetory.Customer;
@@ -16,14 +12,11 @@ using NexusApp.Areas.Financial.Reposetory.ServiceConnection;
 using NexusApp.Areas.Financial.Reposetory.ServiceSub;
 using NexusApp.Areas.Financial.Reposetory.Survey;
 using NexusApp.Areas.RetailShop.Repository;
-
 using NexusApp.Areas.Storage.Repository.Equipment;
 using NexusApp.Areas.Storage.Repository.Storage;
 using NexusApp.Areas.Storage.Repository.Vendor;
 using NexusApp.Areas.Storage.Repository.VendorEquipment;
-
 using NexusApp.Data;
-using NexusApp.MailForm;
 using NexusApp.Repository;
 using NexusApp.Services;
 using NNexusApp.Areas.Financial.Reposetory.ServiceConnection;
@@ -71,10 +64,7 @@ builder.Services.AddScoped<IVendorRepository, VendorImp>();
 builder.Services.AddScoped<IVendorEquipmentRepository, VendorEquipmentImp>();
 //Equipment
 builder.Services.AddScoped<IEquipmentRepository, EquipmentImp>();
-builder.Services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
 builder.Services.AddScoped<IAccountReposetory, AccountImplent>();
-
-builder.Services.AddTransient<EmailSender>();
 
 // Configure Auto Mapper
 builder.Services.AddAutoMapper(typeof(Program));

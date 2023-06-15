@@ -8,7 +8,6 @@ using NexusApp.Areas.Customer.Models;
 using NexusApp.Areas.ServiceConnection.Models;
 using NexusApp.Areas.Survey.Models;
 using NexusApp.Data;
-using NexusApp.MailForm;
 using NexusApp.ModelDTOs;
 using static NexusApp.ModelDTOs.DashboardViewModel;
 
@@ -18,17 +17,17 @@ namespace NexusApp.Areas.Financial.Reposetory.Customer
     {
         private readonly ApplicationDbContext context;
         public readonly MailUtils mailUtils;
-        private readonly EmailSender emailSender;
+
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly IConfiguration configuration;
         public CustomerServiceImp(ApplicationDbContext _context,
-            MailUtils _mailUtils, EmailSender _emailSender, 
+            MailUtils _mailUtils, 
             IWebHostEnvironment _webHostEnvironment, IHttpContextAccessor _httpContextAccessor, IConfiguration _configuration)
         {
             context = _context;
             mailUtils = _mailUtils;
-            emailSender = _emailSender;
+
             webHostEnvironment = _webHostEnvironment;
             httpContextAccessor = _httpContextAccessor;
             configuration = _configuration;
@@ -223,6 +222,7 @@ namespace NexusApp.Areas.Financial.Reposetory.Customer
                         var result = await context.SaveChangesAsync();
                         if (result > 0)
                         {
+
                             var email = new MailContextDTO();
                             email.Name = "Nesux Corporation Register";
                             email.To = customer.Email;
@@ -239,6 +239,9 @@ namespace NexusApp.Areas.Financial.Reposetory.Customer
                             emailTemplate = emailTemplate.Replace("{{SconService}}", serviceName.SubServiceConnections.ServiceConnections.Name);
                             email.Body = emailTemplate;
                             await mailUtils.SendMail(email);
+
+
+
                             var transaction = new TransactionViewModel
                             {
                                 Time = DateTime.Now,
