@@ -1,0 +1,172 @@
+﻿<h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">Payment List</h1>
+
+@model X.PagedList.PagedList<NexusApp.Areas.Financial.Models.PaymentModel>
+@using X.PagedList.Mvc.Core
+@{
+    ViewData["Title"] = "PaymentList";
+}
+<style>
+    .modal.fade.show {
+        display: block;
+        top: 20%
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .pagination li.active {
+            background-color: #4CAF50;
+            padding: 8px 16px;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination li:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+    .table > :not(caption) > * > * {
+        padding: 5px 8px;
+    }
+</style>
+@if (ViewBag.Errors != null && ViewBag.Errors.Count > 0)
+{
+    <div class="alert alert-danger">
+        <h4>Có lỗi xảy ra:</h4>
+        <ul>
+            @foreach (var error in ViewBag.Errors)
+            {
+                <li>@error</li>
+            }
+        </ul>
+    </div>
+}
+<div class="container p-4">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Payment Amount</th>
+                <th>Guarantee Amount</th>
+                <th>Deposit Status</th>
+                <th>Account Status</th>
+                <th>Account Code</th>
+                <th>Payment Mode</th>
+                <th>OrderSeri</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+                @if (Context.Session.GetString("Role") != "Manager")
+                {
+                    <th>Action</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var paylist in Model)
+                {
+                    <tr>
+                        <td>@paylist.OrderDetails.Customers.Name</td>
+                        <td>@paylist.PaymentAmount</td>
+                        <td>@paylist.Guarantees.Amount</td>
+                        <td>@paylist.Guarantees.IsDeposit</td>
+                        <td>@paylist.Accounts.Status</td>
+                        <td>@paylist.Accounts.AccountCode</td>
+                        <td>
+                            <select class="payment-mode">
+                                <option value="0">--Choose--</option>
+                                <option value="Online" selected="@(paylist.PaymentMode == "Online")">Online</option>
+                                <option value="Offline" selected="@(paylist.PaymentMode == "Offline")">Offline</option>
+                            </select>
+                        </td>
+                        @if (@paylist.OrderDetails != null)
+                        {
+                            <td>@paylist.OrderDetails.OrderSeri</td>
+                        }
+                        <td>@paylist.CreatedDate</td>
+                        <td>@paylist.UpdatedDate</td>
+                        @if (Context.Session.GetString("Role") != "Manager")
+                        {
+                            <td>
+                                @if (@paylist.PaymentAmount == 0)
+                                {
+                                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-primary payment-button" data-payment-id="@paylist.PaymentId" data-payment-mode="@paylist.PaymentMode">Payment</a>
+                                }        
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>  
+</div>
+<div>
+    @Html.PagedListPager(Model,page=>Url.Action("PaymentList","Financial",new {page=page}))
+</div>
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="installModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">  
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" style="background-color:aliceblue">
+                        <div class="modal-body" style="display:flex;flex-direction: column">
+                            <h3>Vui lòng chọn phương thức thanh toán.</h3>
+                            </div>                 
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>                                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var paymentButtons = document.getElementsByClassName("payment-button");
+    var modal = document.getElementById("myModal");
+    var closeButton = document.getElementsByClassName("close")[0];
+
+    for (var i = 0; i < paymentButtons.length; i++) {
+        paymentButtons[i].addEventListener("click", function () {
+            var row = this.closest("tr");
+            var selectElement = row.querySelector(".payment-mode");
+            var paymentMode = selectElement.value;
+            var paymentId = this.dataset.paymentId;
+
+            if (paymentMode === "0") {
+                // Hiển thị modal
+                modal.style.display = "block";
+            } else {
+                // Chuyển hướng đến action PaymentUpdate với các tham số paymentId và paymentMode
+                window.location.href = '@Url.Action("PaymentUpdate", "Financial")' + '?paymentId=' + paymentId + '&paymentMode=' + paymentMode;
+            }
+        });
+    }
+    var closeButton = document.querySelector("#myModal .modal-footer button");
+
+    // Xử lý sự kiện click trên nút đóng
+    closeButton.addEventListener("click", function () {
+        // Ẩn modal
+        document.getElementById("myModal").style.display = "none";
+    });
+
+
+</script>
+<!-- Modal -->
+

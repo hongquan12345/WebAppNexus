@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Nexus Corporation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container-header" style="background-color: blue; padding: 12px;align-items: center;">
+            <h1 style="color: #ffffff;text-align: center;">Welcome to Nexus Corporation</h1>
+        </div>
+        <p>Dear {{CustomerName}},</p>
+        <p>Thank you for New Registerings! Your Register has been Create with the following details:</p>
+        <ul>
+            <li>Customer Name: {{CustomerName}}</li>
+            <li>Customer Mail: {{CustomerEmail}}</li>
+            <li>Customer Phone: {{CustomerPhone}}</li>
+            <li>Service Type: {{SconService}}</li>
+            <li>Plan: {{SubService}}</li>
+            <li>Duration: {{Service}}</li>
+        </ul>
+        <p>
+            We will contact you soon
+        </p>
+        <p class="footer">Best regards,</p>
+    </div>
+</body>
+</html>

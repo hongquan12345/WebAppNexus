@@ -1,0 +1,91 @@
+﻿<h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">Employee List</h1>
+@model X.PagedList.IPagedList<NexusApp.Areas.Employee.Models.EmployeeModel>
+@using X.PagedList.Mvc.Core
+@{
+    TempData["title"] = "List of Employee";
+}
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .pagination li.active {
+            background-color: #4CAF50;
+            padding: 8px 16px;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination li:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+    .table > :not(caption) > * > * {
+        padding: 8px 8px;
+    }
+</style>
+@if (Context.Session.GetString("Role") != "Technical,Account")
+{
+    <a asp-action="Create" asp-controller="Employee" asp-area="Employee" class="btn btn-primary">Add</a>
+}
+<div class="container p-4">
+    <form>
+        <label class="form-label">Search: </label>
+        <div class="mb-3 row">
+            <input class="col-sm-3" type="text" name="SearchName" placeholder="Enter Employee Name to search" />
+            <div class="col-sm-1">
+                <input class="btn btn-light-primary" type="submit" value="Search" />
+            </div>
+        </div>
+    </form>
+    <table class="table table-hover">
+        <tr>
+            <th>Employee Name</th>
+            <th>RetailShop Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>IsActive</th>
+            <th>Position</th>
+            <th>Started Date</th>
+            <th>Created Date</th>
+            <th>Updated Date</th>
+            @if (Context.Session.GetString("Role") != "Technical,Account")
+{
+            <th>Action</th>
+}
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.RetailShop.Name</td>
+                <td>@item.Address</td>
+                <td>@item.Phone</td>
+                <td>@item.Email</td>
+                <td>@item.IsActive</td>
+                <td>@item.Position</td>
+                <td>@item.StartedDate</td>
+                <td>@item.CreatedDate</td>
+                <td>@item.UpdatedDate</td>
+                @if (Context.Session.GetString("Role") != "Technical,Accountant")
+                {
+                    <td><a asp-action="EditOrDelete" asp-route-id="@item.EmployeeId" class="btn btn-info">EditOrDelete</a></td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    @Html.PagedListPager(Model,page=>Url.Action("Index","Employee",new {page=page}))
+</div>

@@ -1,0 +1,202 @@
+﻿<style>
+    .payment-form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f7f7f7;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+        .payment-form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .payment-form-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+            .payment-form-container input[type="text"]:focus {
+                border-color: #428bca;
+                outline: none;
+            }
+
+        .payment-form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+            .payment-form-container input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+
+    .offline-payment-form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+        .offline-payment-form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .offline-payment-form-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+            .offline-payment-form-container input[type="text"]:focus {
+                border-color: #999;
+                outline: none;
+            }
+
+        .offline-payment-form-container input[type="submit"] {
+            background-color: #999;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .offline-payment-form-container input[type="submit"]:hover {
+                background-color: #777;
+         }
+
+    .paypal-button {
+        background-color: #ffc439;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    .paypal-button:hover {
+        background-color: #ffa726;
+    }
+</style>
+@model NexusApp.Areas.Financial.Models.PaymentModel
+
+@if (ViewBag.PaymentMode == "Online")
+{
+    @if (Model != null)
+    {
+        <h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">Payment Online</h1>
+        <div class="payment-form-container">
+            <form id="myForm" asp-action="PaymentPaypal">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="PaymentId" />
+                <div class="form-group">
+                    <label class="control-label">Customer Name : </label>
+                    <input asp-for="OrderDetails.Customers.Name" class="form-control" disabled />
+                    <span asp-validation-for="OrderDetails.Customers.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PaymentAmount" class="control-label"></label>
+                    <input asp-for="PaymentAmount" class="form-control" disabled />
+                    <input asp-for="PaymentAmount" class="form-control" type="hidden"/>
+                    <span asp-validation-for="PaymentAmount" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="SendMail"/> @Html.DisplayNameFor(model => model.SendMail)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PaymentMode" class="control-label"></label>
+                    <input asp-for="PaymentMode" class="form-control" disabled/>
+                    <input asp-for="PaymentMode" class="form-control" type="hidden" />
+                    <span asp-validation-for="PaymentMode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreatedDate" class="control-label"></label>
+                    <input asp-for="CreatedDate" class="form-control" />
+                    <span asp-validation-for="CreatedDate" class="text-danger"></span>
+                </div>
+                <a id="submitButton">
+                    <img src="~/image/paypal_checkout2.gif" style="width: 357px;height: 39px;padding: 0px;margin: 0px;"/>
+                </a>
+            </form>
+        </div>
+    }
+}
+else if (ViewBag.PaymentMode == "Offline")
+{
+    @if (Model != null)
+    {
+        <h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">Payment Offline</h1>
+        <div class="payment-form-container">
+            <form asp-area="Financial" asp-controller="Financial" asp-action="PaymentOffline" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="PaymentId" />
+                <div class="form-group">
+                    <label class="control-label">Customer Name : </label>
+                    <input asp-for="OrderDetails.Customers.Name" class="form-control" disabled />
+                    <span asp-validation-for="OrderDetails.Customers.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PaymentAmount" class="control-label"></label>
+                    <input asp-for="PaymentAmount" class="form-control" disabled />
+                    <input asp-for="PaymentAmount" class="form-control" type="hidden" />
+
+                    <span asp-validation-for="PaymentAmount" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="SendMail" /> @Html.DisplayNameFor(model => model.SendMail)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PaymentMode" class="control-label"></label>
+                    <input asp-for="PaymentMode" class="form-control" disabled />
+                    <input asp-for="PaymentMode" class="form-control" type="hidden" />
+                    <span asp-validation-for="PaymentMode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreatedDate" class="control-label"></label>
+                    <input asp-for="CreatedDate" class="form-control" />
+                    <span asp-validation-for="CreatedDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Payment" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    }
+}
+else
+{
+    <!-- Hiển thị giao diện cho danh sách thanh toán -->
+}
+<script>
+    document.getElementById("submitButton").addEventListener("click", function (event) {
+        event.preventDefault();
+        var form = document.getElementById("myForm");
+        form.submit();
+    });
+</script>

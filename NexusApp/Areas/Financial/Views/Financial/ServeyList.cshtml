@@ -1,0 +1,218 @@
+﻿<h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">Survey List </h1>
+@model X.PagedList.PagedList<NexusApp.Areas.Survey.Models.SurveyModel>
+@using X.PagedList.Mvc.Core
+
+@{
+    TempData["title"] = "Survey";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<style>
+    .checked i {
+        margin: 40px;
+        font-size: 30px;
+    }
+    .hide-empty-options .option-text[value=""] {
+        display: none;
+    }
+
+    .modal.fade.show {
+        display: block;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .pagination li.active {
+            background-color: #4CAF50;
+            padding: 8px 16px;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination li:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+    .table > :not(caption) > * > * {
+        padding: 5px 8px;
+    }
+</style>
+@if (ViewBag.Errors != null && ViewBag.Errors.Count > 0)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewBag.Errors)
+            {
+                <li>@error</li>
+            }
+        </ul>
+    </div>
+}
+<div class="container p-4">
+<form asp-area="Financial" asp-controller="Financial" asp-action="ServeyList" method="get">
+    <label class="form-label">Search: </label>
+    <div class="mb-3 row">
+    <input class="col-sm-3" type="text" name="surveyName" placeholder="Survey Name">
+    <input class="col-sm-3" type="text" name="customerName" placeholder="Customer Name">
+    <div class="col-sm-1">
+        <input class="btn btn-light-primary" type="submit" value="Search" />
+    </div>
+    </div>
+</form>
+    <table class="table table-hover">
+            <tr>
+                <th>Customer Name</th>
+                <th>Is Equipment</th>
+                <th>Is Support Internet</th>
+                <th>Status</th>
+                <th>Employee Name</th>
+                <th>Final Check</th>
+                <th>Description Note</th>
+                <th>Survey Date</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+                @if (Context.Session.GetString("Role") != "Manager")
+            {
+                <th>Action</th>
+            }
+            </tr>
+        <tbody>
+            @foreach (var survey in Model)
+            {
+                <tr>
+                    <td>@survey.Customer.Name</td>
+                    <td>
+                        @if (@survey.IsEquipment == true)
+                        {
+                            <span class="checked"><i class="bi bi-check-circle-fill" style="color:#00BFFF"></i></span>
+                        }
+                        else
+                        {
+                            <span class="checked"><i class="bi bi-x-circle-fill" style="color:#FF0000"></i></span>
+                        }
+                    </td>
+                    <td>
+                        @if (@survey.IsSupportInternet == true)
+                        {
+                            <span class="checked"><i class="bi bi-check-circle-fill" style="color:#00BFFF"></i></span>
+                        }
+                        else
+                        {
+                            <span class="checked"><i class="bi bi-x-circle-fill" style="color:#FF0000"></i></span>
+                        }
+                    </td>
+                    <td>@survey.Status</td>
+                    <td>@survey.Employee.Name</td>
+                    <td>
+                        @if (survey.IsSupportInternet && survey.Status == "Completed")
+                        {
+                            <span>Ok</span>
+                        }
+                        else if (!survey.IsSupportInternet && survey.Status == "Completed")
+                        {
+                            <span>No</span>
+                        }
+                        else if (!survey.IsSupportInternet && survey.Status == "Pending")
+                        {
+                            <span>Pending</span>
+                        }
+                        else if (!survey.IsSupportInternet && survey.Status == "Processing")
+                        {
+                            <span>Processing</span>
+                        }
+                        else if (!survey.IsSupportInternet && survey.Status == "False")
+                        {
+                            <span>False</span>
+                        }
+                    </td>
+                    <td>@survey.Descriptiontest</td>
+                    <td>@survey.SurveyDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>@survey.CreatedDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>@survey.UpdatedDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    @if (Context.Session.GetString("Role") != "Manager")
+                    {
+                        @if (survey.IsSupportInternet && survey.Status == "Completed")
+                        {
+                            <td><span class="checked"><i class="bi bi-check-circle-fill" style="color:#00BFFF"></i></span></td>
+                        }
+                        else
+                        {
+                            <td>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#survyerModal-@survey.SurveyId">Update Suvey</button>
+                            </td>
+                        }
+                    
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<!-- Phân trang -->
+<div>
+    @Html.PagedListPager(Model,page=>Url.Action("ServeyList","Financial",new {page=page}))
+</div>
+<!-- Modal -->
+@foreach (var survey in Model)
+{
+    <div class="modal fade" id="survyerModal-@survey.SurveyId" tabindex="-1" role="dialog" aria-labelledby="suryvModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="suryvModalLabel">Update Survey</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                   <form asp-action="UpdateSurvey" asp-area="Financial" asp-controller="Financial" method="post" id="updateSurveyForm-@survey.SurveyId">
+                        <input asp-for="@survey.SurveyId" type="hidden" class="input">
+                        <input asp-for="@survey.EmployeeRefId" type="hidden" class="input">
+                        <input asp-for="@survey.CustomerRefId" type="hidden" class="input">
+                        <div class="form-group">
+                            <label for="Name">Survey Name:</label>
+                            <input type="text" id="Name"  asp-for="@survey.ServeyName">
+                        </div>
+                        <div class="form-group">
+                            <label for="Name">Survey Descriptiontest:</label>
+                            <input type="textArea" id="Descriptiontest" asp-for="@survey.Descriptiontest">
+                        </div>
+                        <div class="form-group">
+                            <label for="isEquipment">Is Equipment:</label>
+                            <input type="checkbox" id="isEquipment" asp-for="@survey.IsEquipment" />
+                        </div>
+                        <div class="form-group">
+                            <label for="isSupportInternet">Is Support Internet:</label>
+                            <input type="checkbox" id="isSupportInternet" asp-for="@survey.IsSupportInternet" />
+                        </div>
+                        <select asp-for="@survey.Status" id="status-select" class="form-control">
+                            <option value="">-- Select Status --</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Processing">Processing</option>
+                            <option value="False">False</option>
+                        </select>                
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" >Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+

@@ -1,0 +1,165 @@
+﻿@model X.PagedList.PagedList<NexusApp.Areas.Financial.Models.OrderDetailModel>
+@using X.PagedList.Mvc.Core
+
+<h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">Order List</h1>
+<style>
+    .checked i {
+        margin: 40px;
+        font-size: 30px;
+    }
+    .modal.fade.show {
+        display: block;
+        top: 20%
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .pagination li.active {
+            background-color: #4CAF50;
+            padding: 8px 16px;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination li:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+    .table > :not(caption) > * > * {
+        padding: 5px 8px;
+    }
+</style>
+@if (ViewBag.Errors != null && ViewBag.Errors.Count > 0)
+{
+    <div class="alert alert-danger">
+        <h4>Có lỗi xảy ra:</h4>
+        <ul>
+            @foreach (var error in ViewBag.Errors)
+            {
+                <li>@error</li>
+            }
+        </ul>
+    </div>
+}
+<div class="container p-4">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Customers Name</th>
+                <th>Employees Name</th>
+                <th>Connection Name</th>
+                <th>Order Seri</th>
+                <th>IsEquipment</th>
+                <th>Quantity</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+                @if (Context.Session.GetString("Role") != "Manager")
+                {
+                    <th>Action</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.Customers.Name</td>
+                        <td>@order.Employees.Name</td>
+                        <td>@order.Connections.ConnectionName</td>
+                        <td>@order.OrderSeri</td>
+                        <td>
+                            @if (@order.IsEquipment == true)
+                            {
+                                <span class="checked"><i class="bi bi-check-circle-fill" style="color:#00BFFF"></i></span>
+                            }
+                            else
+                            {
+                                <span class="checked"><i class="bi bi-x-circle-fill" style="color:#FF0000"></i></span>
+                            }
+                        </td>
+                        <td>@order.Quantity</td>
+                        <td>@order.CreatedDate</td>
+                        <td>@order.UpdatedDate</td>
+                        @if (Context.Session.GetString("Role") != "Manager")
+                        {
+                            <td>
+                                @if (order.UpdatedDate == null)
+                                {
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#orderModal-@order.OrderDetailId">Order</button>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                }
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    @Html.PagedListPager(Model,page=>Url.Action("OrderList","Financial",new {page=page}))
+</div>
+@if (Model != null)
+{
+        @foreach (var order in Model)
+        {
+        <div class="modal fade" id="orderModal-@order.OrderDetailId" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12" style="background-color:aliceblue">
+                                    <div>
+                                        <h4>Make Payment</h4>
+                                            <form asp-action="UpdateOrderDetail" asp-area="Financial" asp-controller="Financial" method="post">
+                                            <input asp-for="@order.OrderDetailId" type="hidden" class="input">
+                                            <input asp-for="@order.OrderSeri" type="hidden" class="input">
+
+                                            @if(@order.Customers != null)
+                                            {
+                                                <input asp-for="@order.Customers.Guarantees" type="hidden" class="input">
+                                                <input asp-for="@order.Customers.Phone" type="hidden" class="input">
+                                                <input asp-for="@order.Customers.Email" type="hidden" class="input">
+                                                <input asp-for="@order.Customers.Name" type="hidden" class="input">
+                                                <input asp-for="@order.Customers.Guarantees" type="hidden" class="input">
+                                            }
+                                     
+                                            <input asp-for="@order.Quantity" type="hidden" class="input">
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Payment</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

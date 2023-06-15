@@ -1,0 +1,251 @@
+﻿<section id="contact" class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="contact-item-wrapper">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-xl-12">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="lni lni-phone"></i>
+                                </div>
+                                <div class="contact-content">
+                                    <h4>Contact</h4>
+                                    <p>(+84) 0981 137 177</p>
+                                    <p>nexus.corporate.group3@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-12">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="lni lni-map-marker"></i>
+                                </div>
+                                <div class="contact-content">
+                                    <h4>Address</h4>
+                                    <p>590 Cach Mang Thang 8, Ward 11, District 3, Ho Chi Minh City</p>
+                                    <p>Viet Nam</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-12">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="lni lni-alarm-clock"></i>
+                                </div>
+                                <div class="contact-content">
+                                    <h4>Schedule</h4>
+                                    <p>24 Hours / 7 Days Open</p>
+                                    <p>Office time: 10 AM - 5:30 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <div class="contact-form-wrapper">
+                    <div class="row">
+                        <div class="col-xl-10 col-lg-8 mx-auto">
+                            <div class="section-title text-center">
+                                <span>Register Now</span>
+                                <h2>
+                                    Ready to Get Survey
+                                </h2>
+                                <p>
+                                    we will perform your request after we receive the information, please check your email frequently for doing not to miss any response.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    @model NexusApp.Areas.Financial.Models.ModelsViews.CustomerRegister
+                    <form asp-area="" asp-action="CustomerRegister" asp-controller="Home" method="post" onsubmit="return validateForm()">
+                        <div class="row  mb-3">
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="Name" id="name" placeholder="Name" required />
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="email" name="Email" id="email" placeholder="Email" required />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="Phone" id="email" placeholder="Phone" required />
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" name="" id="selectedServiceConId">
+                                    <option value="">---Chose Type Connect---</option>
+                                    @if (ViewBag.ServiceScon != null)
+                                    {
+                                        foreach (var item in ViewBag.ServiceScon)
+                                        {
+                                            <option value="@item.ServiceConnectionId">@item.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <select class="form-select" id="subServiceSelect">
+                                    <option value="">---Chose Plane---</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" asp-for="ServiceRefId" name="ServiceRefId" id="serviceSelect">
+                                    <option selected="Model.ServiceRefId" value="">---Chose Duration---</option>
+                                </select>
+                            </div>
+                        </div>
+                        <script>
+                            var serviceConSelect = document.getElementById('selectedServiceConId');
+                            var subServiceSelect = document.getElementById('subServiceSelect');
+                            var serviceSelect = document.getElementById('serviceSelect');
+
+                            serviceConSelect.addEventListener('change', async function () 
+                            {
+                                var selectedServiceConId = serviceConSelect.value;
+                                try {
+                                    const response = await fetch('/Home/GetSubSelection?id=' + selectedServiceConId);
+                                    if (!response.ok) {
+                                        throw new Error('Error: ' + response.status);
+                                    }
+                                    const data = await response.json();
+                                    console.log(data);
+                                    subServiceSelect.innerHTML = '';
+                                    if (data.subServiceOptions && data.subServiceOptions.length > 0) 
+                                    {
+                                        data.subServiceOptions.forEach(function (item) 
+                                        {
+                                            var option = document.createElement('option');
+                                            option.value = item.subServiceConnectionId;
+                                            option.textContent = item.name;
+                                            subServiceSelect.appendChild(option);
+                                        });
+                                    } 
+                                    else {
+                                        var option = document.createElement('option');
+                                        option.value = '';
+                                        option.textContent = '---null---';
+                                        subServiceSelect.appendChild(option);
+                                    }
+                                } catch (error) {
+                                    console.error(error);
+                                }
+                            });
+                            subServiceSelect.addEventListener('change', async function () {
+                                var selectedSubServiceId = subServiceSelect.value;
+                                try {
+                                    const response = await fetch('/Home/GetServiceSelection?id=' + selectedSubServiceId);
+                                    if (!response.ok) {
+                                        throw new Error('Error: ' + response.status);
+                                    }
+                                    const data = await response.json();
+                                    console.log(data);
+                                    serviceSelect.innerHTML = '';
+                                    if (data.services && data.services.length > 0) {
+                                        data.services.forEach(function (item) {
+                                            var option = document.createElement('option');
+                                            option.value = item.serviceId;
+                                            option.textContent = item.name;
+                                            serviceSelect.appendChild(option);
+                                        });
+                                    } else {
+                                        var option = document.createElement('option');
+                                        option.value = '';
+                                        option.textContent = '---null---';
+                                        serviceSelect.appendChild(option);
+                                    }
+                                } catch (error) {
+                                    console.error(error);
+                                }
+                            });
+                        </script>
+                        <div class="row  mb-3">
+                            <div class="col-12">
+                                <textarea class=" form-control" name="message" id="message" placeholder="Type Message" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="button text-center rounded-buttons">
+                                    <button type="submit" class="btn primary-btn rounded-full">
+                                        Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    /* Định dạng nền modal */
+    .modal-content {
+        border-radius: 12px;
+    }
+
+    /* Định dạng tiêu đề modal */
+    .modal-title {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .modal-header{
+        background-color: #155bd5;
+        color: white;
+    }
+    /* Định dạng nút đóng modal */
+    .modal-header .close {
+        color: #333;
+    }
+
+    /* Định dạng nội dung modal */
+    .modal-body {
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Định dạng nút đóng modal ở cuối */
+    .modal-footer {
+        text-align: center;
+        border-top: none;
+    }
+
+        /* Định dạng nút đóng modal */
+        .modal-footer .btn {
+            background-color: #333;
+            color: #fff;
+        }
+</style>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel" style="color:white !important">Thông báo</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Vui lòng chọn một loại kết nối!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+        var selectedValue = $("#serviceSelect").val();
+        if (selectedValue == "") {
+            $('#myModal').modal('show');
+            return false;
+        }
+        return true; 
+    }
+</script>

@@ -1,0 +1,129 @@
+﻿@model NexusApp.Areas.Financial.Models.ModelsViews.InstallGuaranteeViewModel
+<h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">Install List</h1>
+<style>
+    .table > :not(caption) > * > * {
+        padding: 8px 8px;
+    }
+</style>
+@if (TempData.ContainsKey("Error"))
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+<div class="container p-4">
+     <table class="table">
+          <thead>
+                <tr>
+                    <th>Survey Name</th>
+                    <th>Employee Name</th>
+                    <th>Status</th>
+                    <th>Created Date</th>
+                    <th>Installed Date</th>
+                    <th>Expected closing date</th>
+                    <th>Updated Date</th>
+                @if (Context.Session.GetString("Role") != "Manager")
+                {
+                    <th>Action</th>
+                }
+                </tr>
+          </thead>
+          <tbody>
+            @if (Model!=null)
+            {
+                if (Model.InstallModelView !=null)
+                {
+                    @foreach (var install in Model.InstallModelView)
+                    {
+                        <tr>
+                            @if (install.Surveys != null && @install.Surveys.Employee != null)
+                            {
+                                <td>@install.Surveys.ServeyName</td>
+                                <td>@install.Surveys.Employee.Name</td>
+                            }
+                            <td>@install.Status</td>
+                            <td>@install.CreatedDate.ToString("yyyy-MM-dd")</td>
+                            <td>@install.InstalledDate</td>
+                            <td>@install.FinishedDate</td>
+                            <td>@install.UpdatedDate</td>
+                            @if (Context.Session.GetString("Role") != "Manager")
+                            {
+                                @if (@install.Status == "Completed")
+                                {
+                                    <td><span class="checked"><i class="bi bi-check-circle-fill" style="color:#00BFFF"></i></span></td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#installModal-@install.InstallId">Install List</button>
+                                    </td>
+                                }                        
+                            }
+                        </tr>
+                    }
+                }      
+            }
+        </tbody>
+     </table>
+</div>
+@if(Model !=null)
+{
+    @if (Model.InstallModelView != null)
+    {
+        @foreach (var install in Model.InstallModelView)
+        {
+            <div class="modal fade" id="installModal-@install.InstallId" tabindex="-1" role="dialog" aria-labelledby="installModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="installModalLabel">Update Install</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12" style="background-color:aliceblue">
+                                    <div>
+                                        <h4>Install Table</h4>
+                                        <form asp-action="UpdateIns" asp-area="Financial" asp-controller="Financial" method="post">
+                                            <input asp-for="@install.InstallId" type="hidden" class="input">
+                                            <input asp-for="@install.Surveys.SurveyId" type="hidden" class="input">
+                                            <input asp-for="@install.Surveys.ServeyName" type="hidden" class="input">
+                                            <input asp-for="@install.Surveys.Status" type="hidden" class="input">
+                                            <input asp-for="@install.Surveys.IsEquipment" type="hidden" class="input">
+                                            <div class="form-group">
+                                                <label for="Name">Create Date :</label>
+                                                <input type="Date" id="createDate" asp-for="@install.CreatedDate">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Install Date:</label>
+                                                <input type="Date" id="installDate" asp-for="@install.InstalledDate" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Finish Date:</label>
+                                                <input type="Date" id="updateDate" asp-for="@install.UpdatedDate" />
+                                            </div>
+                                            <select asp-for="@install.Status" id="status-select" class="form-control">
+                                                <option value="">-- Select Status --</option>
+                                                <option value="Completed">Completed</option>
+                                                <option value="Pending">Pending</option>
+                                                <option value="Processing">Processing</option>
+                                                <option value="False">False</option>
+                                            </select>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

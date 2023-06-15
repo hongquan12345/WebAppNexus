@@ -1,0 +1,79 @@
+﻿<h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">Service List</h1>
+@model X.PagedList.IPagedList<NexusApp.Areas.ServiceConnection.Models.ServiceModel>
+@using X.PagedList.Mvc.Core
+@{
+    TempData["title"] = "List of Service";
+}
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .pagination li.active {
+            background-color: #4CAF50;
+            padding: 8px 16px;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination li:hover:not(.active) {
+            background-color: #ddd;
+        }
+</style>
+@if (Context.Session.GetString("Role") != "Manager")
+                {
+<a asp-action="Create" asp-controller="Service" asp-area="ServiceConnection" class="btn btn-primary">Add</a>
+                }
+<div class="container p-4">
+    <form>
+        <label class="form-label">Search: </label>
+        <div class="mb-3 row">
+            <input class="col-sm-3 type="text" name="SearchName" placeholder="Enter Service Name to search" />
+            <div class="col-sm-1">
+                <input class="btn btn-light-primary" type="submit" value="Search" />
+            </div>
+        </div>
+    </form>
+    <table class="table table-hover">
+        <tr>
+            <th>Service Name</th>
+            <th>Service Price</th>
+            <th>Duration</th>
+            <th>SubService Name</th>
+            <th>Created Date</th>
+            <th>Updated Date</th>
+            @if (Context.Session.GetString("Role") != "Manager")
+{
+            <th>Action</th>
+}
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.ServicePrice</td>
+                <td>@item.Duration</td>
+                <td>@item.SubServiceConnections.Name</td>
+                <td>@item.CreatedDate</td>
+                <td>@item.UpdatedDate</td>
+                @if (Context.Session.GetString("Role") != "Manager")
+                {
+                <td><a asp-action="EditOrDelete" asp-route-id="@item.ServiceId" class="btn btn-info">EditOrDelete</a></td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    @Html.PagedListPager(Model,page=>Url.Action("Index","Service",new {page=page}))
+</div>

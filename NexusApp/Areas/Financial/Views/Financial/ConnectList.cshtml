@@ -1,0 +1,111 @@
+﻿<h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">List Connection</h1>
+@model X.PagedList.PagedList<NexusApp.Areas.Financial.Models.ConnectionModel>
+@using X.PagedList.Mvc.Core
+<style>
+    .modal.fade.show {
+        display: block;
+        top: 20%
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .pagination li.active {
+            background-color: #4CAF50;
+            padding: 8px 16px;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination li:hover:not(.active) {
+            background-color: #ddd;
+        }
+</style>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ConnectionName
+            </th>
+            <th>
+                ConnectionType
+            </th>
+            <th>
+                Status
+            </th>
+          
+            <th>
+               Services
+            </th>
+            <th>
+                Thời gian còn lại
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+            var index = Model.ToList().IndexOf(item);
+            var timeElapsed = ViewBag.TimeElapsedList[index];
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConnectionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConnectionType)
+            </td>
+                @if (item.Status =="false")
+                {
+                    <td>
+                        <i class="bi bi-wifi-off text-danger fs-6"></i>
+                        &nbsp;&nbsp;
+                        <i></i>
+                        &nbsp;<i></i>
+                        &nbsp;<i></i>
+                        <a type="btn btn-primary" asp-controller="Financial" asp-area="Financial" asp-action="ConnectList">
+                            &nbsp;&nbsp;<i class="bi bi-arrow-clockwise fs-6"></i>
+                        </a>
+                    </td>
+                }
+                else
+                {
+                    <td><i class="bi bi-router-fill text-success fs-6"></i>
+                        &nbsp;&nbsp;
+                        <i></i>
+                        &nbsp;<i></i>
+                        &nbsp;<i></i>
+                        <a type="btn btn-primary" asp-controller="Financial" asp-area="Financial" asp-action="ConnectList">
+                            &nbsp;&nbsp;<i class="bi bi-arrow-clockwise fs-6"></i>
+                        </a>
+                    </td>
+                }
+            <td>
+                @Html.DisplayFor(modelItem => item.Services.Name)
+            </td>
+            <td>
+                    @if (timeElapsed!=null)
+                    {
+                        <p>
+                            @timeElapsed Days
+                        </p>
+                    }
+       
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    @Html.PagedListPager(Model,page=>Url.Action("ConnectList","Financial",new {page=page}))
+</div>

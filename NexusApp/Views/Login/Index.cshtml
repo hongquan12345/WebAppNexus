@@ -1,0 +1,69 @@
+﻿@model NexusApp.ModelDTOs.LoginDTOs
+@{
+    Layout = "_loginLayout";
+}
+<section class="mt-5 mb-5 d-flex justify-content-center align-items-center">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form asp-controller="Login" asp-action="CheckLogin" method="post">
+
+                    <div class="my-4 text-center">
+                        <i class="bi bi-person-workspace text-primary" style="font-size:4rem;"></i>
+                    </div>
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form3Example3">Email address</label>
+                        <input asp-for="Email"  type="email" id="form3Example3" class="form-control form-control-lg"
+                               placeholder="Enter a valid email address" />
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                        <label class="form-label" for="form3Example4">Password</label>
+                        <input asp-for="Password"  type="password" id="form3Example4" class="form-control form-control-lg"
+                               placeholder="Enter password" />
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <!-- Checkbox -->
+                        <div class="form-check mb-0">
+                            <input asp-for="IsAdmin"  class="form-check-input me-2" type="checkbox"  id="IsAdmin" />
+                            <label class="form-check-label fw-bold" for="form2Example3">
+                                Management
+                            </label>
+                            <div id="isAdminWarning" class="alert  alert-danger">
+                                <strong>Pay attention!</strong> <a href="#" class="alert-link">If you are customer</a> this function is not using for login.
+                            </div>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="All" class="text-danger mt-4"></div>
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="btn btn-primary btn-lg"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                            Login
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        var isadmin = document.getElementById("IsAdmin");
+        isadmin.addEventListener("change", function () {
+            document.getElementById("isAdminWarning").classList.toggle("d-none");
+        });
+    </script>
+}

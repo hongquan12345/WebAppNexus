@@ -1,0 +1,91 @@
+﻿<h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">List Account</h1>
+@model X.PagedList.PagedList<NexusApp.Areas.Customer.Models.AccountModel>
+@using X.PagedList.Mvc.Core
+@{
+    ViewData["Title"] = "AccountList";
+}
+<style>
+    .modal.fade.show {
+        display: block;
+        top: 20%
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .pagination li.active {
+            background-color: #4CAF50;
+            padding: 8px 16px;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination li:hover:not(.active) {
+            background-color: #ddd;
+        }
+</style>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                AccountCode
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+               Password
+            </th>
+            <th>
+               Customer
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) 
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Name)
+                </td>
+                @if (Context.Session.GetString("Role") != "Manager")
+                {
+                <td>
+                    @if (item.Payments.Count == 0)
+                    {
+                        <a class="btn btn-primary" asp-action="DeleteAccount" asp-route-id="@item.AccountId">Delete</a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-danger" asp-action="DeleteAccount" asp-route-id="@item.AccountId"disable>Delete</button>
+                    }
+                </td>
+                }
+            </tr>
+            }
+    </tbody>
+</table>
+<div>
+    @Html.PagedListPager(Model,page=>Url.Action("AccountList","Financial",new {page=page}))
+</div>

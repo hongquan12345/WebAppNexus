@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NexusApp</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    @*   <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/NexusApp.styles.css" asp-append-version="true" />*@
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css" />
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="~/assets/images/favicon.svg" type="image/svg" />
+    <link rel="stylesheet" href="~/assets/css/lineicons.css" />
+    <link rel="stylesheet" href="~/assets/css/tiny-slider.css" />
+    <link rel="stylesheet" href="~/assets/css/glightbox.min.css" />
+
+    <link rel="stylesheet" href="~/assets/css/stylelayout.css" />
+    <link rel="stylesheet" href="~/assets/css/styleLogin.css" />
+</head>
+<body>
+    <section class="navbar-area navbar-nine " style="position:relative;">
+        <div class="container">
+
+            <nav  class="navbar navbar-expand-lg  d-flex justify-content-between align-items-center">
+                <a>
+                    <label class="fs-1 fw-bold text-white">Nexus</label>
+                </a>
+                <div>
+                    <div class="text-white d-flex justify-content-between text-end align-items-center">
+                        <a asp-controller="Home" asp-action="Index" asp-area="" style="cursor:pointer;" class="pe-3 text-decoration-none text-white">Back To Home</a>
+                    </div>
+                </div>
+            </nav>
+            <!-- navbar -->
+        </div>
+        <!-- container -->
+    </section>
+
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <!-- Start Footer Area -->
+    <footer class="footer-area footer-eleven" style="background-color: rgba(228, 228, 228, 0.715);">
+        <!-- Start Footer Top -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="inner-content">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <!-- Single Widget -->
+                            <div class="footer-widget f-about">
+                                <div class="logo">
+                                    <a href="index.html">
+                                        <img src="assets/images/logo.svg" alt="#" class="img-fluid" />
+                                    </a>
+                                </div>
+                                <p>
+                                    Making the world a better place through constructing elegant
+                                    hierarchies.
+                                </p>
+                                <p class="copyright-text">
+                                    <span>© 2024 Ayro UI.</span>Designed and Developed by
+                                    <a href="javascript:void(0)" rel="nofollow"> Ayro UI </a>
+                                </p>
+                            </div>
+                            <!-- End Single Widget -->
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-12">
+                            <!-- Single Widget -->
+                            <div class="footer-widget f-link">
+                                <h5>Solutions</h5>
+                                <ul>
+                                    <li><a href="javascript:void(0)">Marketing</a></li>
+                                    <li><a href="javascript:void(0)">Analytics</a></li>
+                                    <li><a href="javascript:void(0)">Commerce</a></li>
+                                    <li><a href="javascript:void(0)">Insights</a></li>
+                                </ul>
+                            </div>
+                            <!-- End Single Widget -->
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <!-- Single Widget -->
+                            <div class="footer-widget newsletter">
+                                <h5>Subscribe</h5>
+                                <p>Subscribe to our newsletter for the latest updates</p>
+                                <form action="#" method="get" target="_blank" class="newsletter-form">
+                                    <input name="EMAIL" placeholder="Email address" required="required" type="email" />
+                                    <div class="button">
+                                        <button class="sub-btn">
+                                            <i class="lni lni-envelope"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- End Single Widget -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Footer Top -->
+    </footer>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/glightbox.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    <script src="~/assets/js/tiny-slider.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

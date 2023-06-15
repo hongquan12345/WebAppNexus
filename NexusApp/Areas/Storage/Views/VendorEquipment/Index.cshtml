@@ -1,0 +1,62 @@
+﻿<h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">VendorEquipment List</h1>
+@model X.PagedList.IPagedList<NexusApp.Areas.Storage.Models.Vendor_Equipment>
+@using X.PagedList.Mvc.Core
+@{
+    TempData["title"] = "List of VendorEquipment";
+}
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+        .pagination li.active {
+            background-color: #4CAF50;
+            padding: 8px 16px;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination li:hover:not(.active) {
+            background-color: #ddd;
+        }
+</style>
+@if (Context.Session.GetString("Role") != "Manager")
+{
+    <a asp-action="Create" asp-controller="VendorEquipment" asp-area="Storage" class="btn btn-primary">Add</a>
+}
+<div class="container p-4">
+    <table class="table table-hover">
+        <tr>
+            <th>Vendor Name</th>
+            <th>Equipment Name</th>
+            <th>Equipment Serial</th>
+            <th>Quantity</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Vendor.Name</td>
+                <td>@item.Equipment.Name</td>
+                <td>@item.Equipment.Serial</td>
+                <td>@item.Quantity</td>
+                @if (Context.Session.GetString("Role") != "Manager")
+                {
+                    <td><a asp-action="EditOrDelete" asp-route-id="@item.Id" class="btn btn-info">EditOrDeletea</a></td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    @Html.PagedListPager(Model,page=>Url.Action("Index","VendorEquipment",new {page=page}))
+</div>

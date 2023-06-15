@@ -1,0 +1,70 @@
+﻿@model NexusApp.ModelDTOs.UserDetailDTOs
+@{
+    ViewData["Title"] = "UserDetail";
+    Layout = "_loginLayout";
+}
+<div class="container card card-body mt-5 pt-4" style="width:900px; margin:auto;">
+    <h5>Customer Information</h5>
+    <small>Please update all blank information below for easy to support</small>
+    <hr />
+    <div class="row mb-3">
+        <div class="col-sm-8">
+            <label class="fw-bold">Customer Name: </label>
+            <small>@Model.Name</small>
+        </div>
+        <div class="col-sm-4">
+            <label class="fw-bold">Birthday: </label>
+            <small>@Model.Birthday</small>
+        </div>
+    </div>
+    <div class="col-sm-12 mb-3">
+        <label class="fw-bold">Email: </label>
+        <small>@Model.Email</small>
+    </div>
+    <div class="row mb-3">
+        <div class="col-sm-8">
+            <label class="fw-bold">Phone Number: </label>
+            <small>@Model.Phone</small>
+        </div>
+        <div class="col-sm-4">
+            <label class="fw-bold">Account Code: </label>
+            <small>@Model.AccoutCode</small>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 mb-3">
+            <label class="fw-bold">Street: </label>
+            <small>@Model.Street</small>
+        </div>
+        <div class="col-sm-4 mb-3">
+            <label class="fw-bold">Connection: </label>
+            @if (Model.statusAccount == true)
+            {
+                <small><i class="bi bi-circle-fill text-success"></i></small>
+            }
+            else
+            {
+                <small><i class="bi bi-circle-fill text-secondary"></i></small>
+                <a class="btn btn-primary" asp-route-paymentMode="Online" asp-action="UserPayment" asp-controller="User">Payment</a>
+            }
+        </div>
+    </div>
+    <div class="row mb-3">
+
+        <div class="col-sm-4">
+            <label class="fw-bold">Ward: </label>
+            <small>@Model.Ward</small>
+        </div>
+        <div class="col-sm-4">
+            <label class="fw-bold">District: </label>
+            <small>@Model.District</small>
+        </div>
+        <div class="col-sm-4">
+            <label class="fw-bold">City: </label>
+            <small>@Model.City</small>
+        </div>
+    </div>
+    <div class="">
+        <a class="btn btn-primary" asp-action="Update" asp-controller="User">Update</a>
+    </div>
+</div>

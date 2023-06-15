@@ -1,0 +1,41 @@
+﻿@model NexusApp.Areas.Storage.Models.StorageModel
+
+@{
+    ViewData["Title"] = "Update Or Delete";
+}
+
+<h1>Update Or Delete Storage</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditOrDelete" method="post">
+            <input asp-for="StorageId" hidden />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeRefId" class="control-label"></label>
+                <select asp-for="EmployeeRefId" class="form-control" asp-items="ViewBag.noDepartxxy"></select>
+            </div>
+            <br />
+            <div style="display:flex;flex-direction=row">
+                <input type="submit" value="Update" name="submit" class="btn btn-primary" /> &emsp; &emsp;
+                <input onclick="return confirm('Are you sure to delete?')" type="submit" value="Delete" name="submit" class="btn btn-danger" />
+            </div>
+
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

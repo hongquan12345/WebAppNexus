@@ -1,0 +1,27 @@
+﻿@model IEnumerable<NexusApp.Areas.Survey.Models.SurveyModel>
+@{
+    TempData["title"] = "List of Employee";
+}
+
+<a asp-action="Create" asp-controller="Survey" asp-area="Survey" class="btn btn-primary">Create</a>
+<table class="table table-hover">
+    <tr>
+
+        <th>Survey Name</th>
+        <th>IsEquipment</th>
+        <th>IsSupportInternet</th>
+        <th>Status</th>
+        <th>SurveyDate</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>@item.ServeyName</td>
+            <td>@item.IsEquipment</td>
+            <td>@item.IsSupportInternet</td>
+            <td>@item.Status</td>
+            <td>@item.SurveyDate</td>
+        </tr>
+    }
+</table>

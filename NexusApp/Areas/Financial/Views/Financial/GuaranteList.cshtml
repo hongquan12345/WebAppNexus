@@ -1,0 +1,173 @@
+﻿<h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">Guarantee List</h1>
+@model X.PagedList.PagedList<NexusApp.Areas.Survey.Models.GuaranteeModel>
+@using X.PagedList.Mvc.Core
+@{
+    TempData["title"] = "Survey";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<style>
+    .modal.fade.show {
+        display: block;
+        top: 20%
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+    }
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+    }
+    .pagination li.active {
+        background-color: #4CAF50;
+        padding: 8px 16px;
+        color: white;
+        border: 1px solid #4CAF50;
+    }
+    .pagination li:hover:not(.active) {
+        background-color: #ddd;
+    }
+
+    .table > :not(caption) > * > * {
+        padding: 8px 8px;
+    }
+</style>
+<div class="container p-4">
+<form asp-area="Financial" asp-controller="Financial" asp-action="GuaranteList" method="get">
+     <label class="form-label">Search: </label>
+        <div class="mb-3 row">
+            <input class="col-sm-3" type="text" name="surveyName" placeholder="Survey Name">
+            <input class="col-sm-3" type="text" name="customerName" placeholder="Customer Name">
+            <input class="col-sm-3" type="text" name="employeeName" placeholder="Employese Name">
+
+            <div class="col-sm-1">
+                <input class="btn btn-light-primary" type="submit" value="Search" />
+            </div>
+        </div>
+</form>
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Employes Name</th>
+                <th>IsDeposit Status</th>
+                <th>Amount</th>
+                <th>SendMail Status</th>
+                <th>Note</th>
+                <th>Deposited Date</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+                @if (Context.Session.GetString("Role") != "Manager")
+            {
+                <th>Action</th>
+            }
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var guarantee in Model)
+                {
+                    <tr>
+                        @if (@guarantee.surveyModel != null)
+                        {
+                            @if (@guarantee.surveyModel.Customer != null)
+                            {
+                                <td>@guarantee.surveyModel.Customer.Name</td>
+                            }
+                            @if (@guarantee.surveyModel.Employee != null)
+                            {
+                                <td>@guarantee.surveyModel.Employee.Name</td>
+                            }
+                        }
+                        <td>@guarantee.IsDeposit</td>
+                        <td>@guarantee.Amount</td>
+                        <td>@guarantee.SendMail</td>
+                        <td>@guarantee.Note</td>
+                        <td>@guarantee.DepositedDate</td>
+                        <td>@guarantee.CreatedDate</td>
+                        <td>@guarantee.UpdatedDate</td>
+                        @if (Context.Session.GetString("Role") != "Manager")
+                        {
+                            @if (@guarantee.IsDeposit == true)
+                            {
+                                <td><span class="checked"><i class="bi bi-check-circle-fill" style="color:#00BFFF"></i></span></td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#GuaranteeModal-@guarantee.GuaranteeId">Deposit</button>
+                                </td>
+                            }
+                     
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+<!-- Phân trang -->
+<!-- Phân trang -->
+<div>
+    @Html.PagedListPager(Model,page=>Url.Action("GuaranteList","Financial",new {page=page}))
+</div>
+@if (Model != null)
+{
+    @foreach (var guarantee in Model)
+    {
+        <div class="modal fade" id="GuaranteeModal-@guarantee.GuaranteeId" tabindex="-1" role="dialog" aria-labelledby="installModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="display:flex;flex-direction: column">
+                        <div class="row">
+                            <div class="col-md-12" style="background-color:aliceblue">
+                                <div>
+                                    <h4>Deposit Table</h4>
+                                    <form asp-action="UpdateGuarantee" asp-area="Financial" asp-controller="Financial" method="post">
+                                        <input asp-for="@guarantee.GuaranteeId" type="hidden" class="input">
+                                        <input asp-for="@guarantee.SurveyRefId" type="hidden" class="input">
+                                        <input asp-for="@guarantee.Amount" type="hidden" class="input">
+                                        @if (@guarantee.surveyModel != null)
+                                        {
+                                            <input asp-for="@guarantee.surveyModel.IsEquipment" type="hidden" class="input">
+                                            <input asp-for="@guarantee.surveyModel.Status" type="hidden" class="input">
+                                            <input asp-for="@guarantee.surveyModel.ServeyName" type="hidden" class="input">
+                                        }
+                                        <div class="form-group">
+                                            <label for="Name">IsDeposit :</label>
+                                            <input type="checkbox" id="isDeposit" asp-for="@guarantee.IsDeposit">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Note:</label>
+                                            <input type="text" id="Note" asp-for="@guarantee.Note" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Deposited Date:</label>
+                                            <input type="Date" id="depositedDate" asp-for="@guarantee.DepositedDate" />
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

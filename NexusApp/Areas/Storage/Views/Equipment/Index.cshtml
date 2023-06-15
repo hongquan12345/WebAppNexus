@@ -1,0 +1,109 @@
+﻿<h1 class="shadow-lg p-5 d-flex bg-light justify-content-center align-items-center">Equipment List</h1>
+@model X.PagedList.IPagedList<NexusApp.Areas.Storage.Models.EquipmentModel>
+@using X.PagedList.Mvc.Core
+@{
+    TempData["title"] = "List of Equipment";
+}
+<style>
+    .table > :not(caption) > * > * {
+        padding: 5px 8px;
+    }
+    .checked i {
+        margin: 40px;
+        font-size: 30px;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+        }
+
+            .pagination li.active {
+                background-color: #4CAF50;
+                padding: 8px 16px;
+                color: white;
+                border: 1px solid #4CAF50;
+            }
+
+            .pagination li:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>
+@if (Context.Session.GetString("Role") != "Manager")
+{
+    <a asp-action="Create" asp-controller="Equipment" asp-area="Storage" class="btn btn-primary">Add</a>
+}
+<div class="container p-4">
+    <form>
+        <label class="form-label">Search: </label>
+        <div class="mb-3 row">
+            <input class="col-sm-3" type="text" name="SearchName" placeholder="Enter Equipment Name to search" />
+            <input class="col-sm-2" type="text" name="SearchSerial" placeholder="Enter Serial to search" />
+            <div class="col-sm-1">
+                <input class="btn btn-light-primary" type="submit" value="Search" />
+            </div>
+        </div>
+    </form>
+    <table class="table table-hover">
+        <tr>
+            <th>Equipment Name</th>
+            <th>Serial</th>
+            <th>IsSupportLine</th>
+            <th>IsSupportInternet</th>
+            <th>Price</th>
+            <th>Type</th>
+            <th>Storage Name</th>
+            <th>Created Date</th>
+            <th>Updated Date</th>
+            @if (Context.Session.GetString("Role") != "Manager")
+{
+            <th>Action</th>
+}
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Serial</td>
+                <td>@if(@item.IsSupportLine == true){
+                        <span class="checked"><i class="bi bi-check-circle-fill" style="color:#00BFFF"></i></span>
+                }
+                else
+                {
+                        <span class="checked"><i class="bi bi-x-circle-fill" style="color:#FF0000"></i></span>
+                }
+                </td>
+                <td>
+                    @if (@item.IsSupportInternet == true)
+                    {
+                        <span class="checked"><i class="bi bi-check-circle-fill" style="color:#00BFFF"></i></span>
+                    }
+                    else
+                    {
+                        <span class="checked"><i class="bi bi-x-circle-fill" style="color:#FF0000"></i></span>
+                    }
+                </td>
+                <td>@item.Price</td>
+                <td>@item.Type</td>
+                <td>@item.Storage.Name</td>
+                <td>@item.CreatedDate</td>
+                <td>@item.UpdatedDate</td>
+                @if (Context.Session.GetString("Role") != "Manager")
+                {
+                    <td><a asp-action="EditOrDelete" asp-route-id="@item.EquipmentId" class="btn btn-info">EditOrDelete</a></td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    @Html.PagedListPager(Model,page=>Url.Action("Index","Equipment",new {page=page}))
+</div>
