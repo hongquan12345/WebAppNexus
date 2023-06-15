@@ -1,0 +1,373 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = NexusApp
+build_property.RootNamespace = NexusApp
+build_property.ProjectDir = C:\Users\Quankz\Desktop\WebAppNexus\NexusApp\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\Users\Quankz\Desktop\WebAppNexus\NexusApp
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Admin/Views/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Admin/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Customer/Views/Customer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcQ3VzdG9tZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Customer/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Customer/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Employee/Views/Employee/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcRW1wbG95ZWVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Employee/Views/Employee/EditOrDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcRW1wbG95ZWVcRWRpdE9yRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Employee/Views/Employee/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcRW1wbG95ZWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Employee/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Employee/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZWVcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Financial/AccountList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXEZpbmFuY2lhbFxBY2NvdW50TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Financial/ConnectList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXEZpbmFuY2lhbFxDb25uZWN0TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Financial/CustomerList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXEZpbmFuY2lhbFxDdXN0b21lckxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Financial/GuaranteList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXEZpbmFuY2lhbFxHdWFyYW50ZUxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Financial/InstallList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXEZpbmFuY2lhbFxJbnN0YWxsTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Financial/OrderList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXEZpbmFuY2lhbFxPcmRlckxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Financial/PaymentList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXEZpbmFuY2lhbFxQYXltZW50TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Financial/PaymentPay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXEZpbmFuY2lhbFxQYXltZW50UGF5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Financial/PaymentUpdate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXEZpbmFuY2lhbFxQYXltZW50VXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Financial/ServeyList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXEZpbmFuY2lhbFxTZXJ2ZXlMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Payment/PaymentCancel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXFBheW1lbnRcUGF5bWVudENhbmNlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Payment/PaymentFailure.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXFBheW1lbnRcUGF5bWVudEZhaWx1cmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/Payment/PaymentSuccess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXFBheW1lbnRcUGF5bWVudFN1Y2Nlc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/ThankYou/RegisterNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXFRoYW5rWW91XFJlZ2lzdGVyTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/ThankYou/RegisterUpdate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXFRoYW5rWW91XFJlZ2lzdGVyVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/ThankYou/ThankYou.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXFRoYW5rWW91XFRoYW5rWW91LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Financial/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRmluYW5jaWFsXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Infrastructure/Views/Infrastructure/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSW5mcmFzdHJ1Y3R1cmVcVmlld3NcSW5mcmFzdHJ1Y3R1cmVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Infrastructure/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSW5mcmFzdHJ1Y3R1cmVcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Infrastructure/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSW5mcmFzdHJ1Y3R1cmVcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/RetailShop/Views/RetailShop/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmV0YWlsU2hvcFxWaWV3c1xSZXRhaWxTaG9wXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/RetailShop/Views/RetailShop/EditOrDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmV0YWlsU2hvcFxWaWV3c1xSZXRhaWxTaG9wXEVkaXRPckRlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/RetailShop/Views/RetailShop/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmV0YWlsU2hvcFxWaWV3c1xSZXRhaWxTaG9wXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/RetailShop/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmV0YWlsU2hvcFxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/RetailShop/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUmV0YWlsU2hvcFxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/ServiceConnection/Views/ServiceConnection/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU2VydmljZUNvbm5lY3Rpb25cVmlld3NcU2VydmljZUNvbm5lY3Rpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/ServiceConnection/Views/ServiceConnection/EditOrDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU2VydmljZUNvbm5lY3Rpb25cVmlld3NcU2VydmljZUNvbm5lY3Rpb25cRWRpdE9yRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/ServiceConnection/Views/ServiceConnection/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU2VydmljZUNvbm5lY3Rpb25cVmlld3NcU2VydmljZUNvbm5lY3Rpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/ServiceConnection/Views/Service/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU2VydmljZUNvbm5lY3Rpb25cVmlld3NcU2VydmljZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/ServiceConnection/Views/Service/EditOrDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU2VydmljZUNvbm5lY3Rpb25cVmlld3NcU2VydmljZVxFZGl0T3JEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/ServiceConnection/Views/Service/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU2VydmljZUNvbm5lY3Rpb25cVmlld3NcU2VydmljZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/ServiceConnection/Views/SubServiceConnection/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU2VydmljZUNvbm5lY3Rpb25cVmlld3NcU3ViU2VydmljZUNvbm5lY3Rpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/ServiceConnection/Views/SubServiceConnection/EditOrDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU2VydmljZUNvbm5lY3Rpb25cVmlld3NcU3ViU2VydmljZUNvbm5lY3Rpb25cRWRpdE9yRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/ServiceConnection/Views/SubServiceConnection/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU2VydmljZUNvbm5lY3Rpb25cVmlld3NcU3ViU2VydmljZUNvbm5lY3Rpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/ServiceConnection/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU2VydmljZUNvbm5lY3Rpb25cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/ServiceConnection/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU2VydmljZUNvbm5lY3Rpb25cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/Equipment/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xFcXVpcG1lbnRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/Equipment/EditOrDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xFcXVpcG1lbnRcRWRpdE9yRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/Equipment/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xFcXVpcG1lbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/Storage/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xTdG9yYWdlXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/Storage/EditOrDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xTdG9yYWdlXEVkaXRPckRlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/Storage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xTdG9yYWdlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/VendorEquipment/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xWZW5kb3JFcXVpcG1lbnRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/VendorEquipment/EditOrDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xWZW5kb3JFcXVpcG1lbnRcRWRpdE9yRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/VendorEquipment/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xWZW5kb3JFcXVpcG1lbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/Vendor/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xWZW5kb3JcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/Vendor/EditOrDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xWZW5kb3JcRWRpdE9yRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/Vendor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xWZW5kb3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Storage/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RvcmFnZVxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Survey/Views/Survey/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3VydmV5XFZpZXdzXFN1cnZleVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Survey/Views/Survey/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3VydmV5XFZpZXdzXFN1cnZleVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Survey/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3VydmV5XFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Survey/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3VydmV5XFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Home/_AboutSessionPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQWJvdXRTZXNzaW9uUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Home/_BlogSessionPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQmxvZ1Nlc3Npb25QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Home/_ContactSessionPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQ29udGFjdFNlc3Npb25QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Home/_HomeSessionPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfSG9tZVNlc3Npb25QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Home/_PricingSessionPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfUHJpY2luZ1Nlc3Npb25QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Home/_ServiceSessionPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfU2VydmljZVNlc3Npb25QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Login/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Shared/_loginLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9sb2dpbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/User/PaymentFailed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQYXltZW50RmFpbGVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/User/PaymentSuccess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQYXltZW50U3VjY2Vzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/User/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/User/UserDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/User/UserPayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyUGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Areas/Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-gpt3x2k4ud
+
+[C:/Users/Quankz/Desktop/WebAppNexus/NexusApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-57cj51jv0v
