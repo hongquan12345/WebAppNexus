@@ -5,7 +5,8 @@ Before running the app, make sure to configure the following settings:
 - **AllowedHosts**: Set the value to `*`.
 
 - **ConnectionStrings**: Update the `DefaultConnection` with your SQL server information. The format should be as follows:
-
+- **DefaultConnection** :  `"server= ;database=  ;uid= ;pwd= ;TrustServerCertificate=True"`. Whith `server` is your  ServerSQL Name, `database`  is Your name Database,  `uid` you account SQL Server, `pwd` you password SQL Server .
+- **Run Project** :  After configuring the server, `Package Manager Console` in  `NuGet Package Manager` (if you use Visul Studio). and run this Commant `Update-database` . Ok Now you can run server. ^^
 # Nexus Email
 
 Use the following credentials for Nexus Email:
